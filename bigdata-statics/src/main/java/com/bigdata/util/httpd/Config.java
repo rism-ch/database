@@ -32,10 +32,10 @@ package com.bigdata.util.httpd;
  */
 public final class Config {
 	
-	public static final int BLAZEGRAPH_HTTP_PORT = 9999;
+	public static final int BLAZEGRAPH_HTTP_PORT = 9998;
 	
     //See BLZG-1375 Update for /blazegraph path	
-    public static final String BLAZEGRAPH_PATH = "blazegraph";
+    public static final String BLAZEGRAPH_PATH = "rism";
     
     //See BLZG-1375.  Adding for legacy migration purposes.
     @Deprecated

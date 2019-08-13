@@ -34,22 +34,22 @@
       </div>
 
       <div id="tab-selector">
-        <a data-target="splash" class="active">Welcome</a>
+        <a data-target="splash" class="active">Santé</a>
         <a data-target="query">Query</a>
-        <a data-target="update">Update</a>
+        <a data-target="update" style="display: none;">Update</a>
         <a data-target="explore">Explore</a>
-        <a data-target="namespaces">Namespaces</a>
-        <a data-target="status">Status</a>
-        <a data-target="health">Health</a>
-        <a data-target="performance">Performance</a>
-        <p>Current namespace: <span id="current-namespace"></span></p>
+        <a data-target="namespaces" style="display: none;">Namespaces</a>
+        <a data-target="status" style="display: none;">Status</a>
+        <a data-target="health" style="display: none;">Health</a>
+        <a data-target="performance" style="display: none;">Performance</a>
+        <p style="display: none;">Current namespace: <span id="current-namespace"></span></p>
       </div>
 
       <div class="tab" id="splash-tab">
 
         <div class="splashbox">
           <p>
-            Welcome to Blazegraph Database!
+            Welcome to Blazegraph Database and Café!
           </p>
         </div>
         <div class="splashbox">
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <div class="tab" id="update-tab">
+      <div class="tab" id="update-tab"  style="display: none;">
 
         <div class="box">
 
@@ -226,7 +226,7 @@
 
       </div>
 
-      <div id="query-export-modal" class="modal">
+      <div id="query-export-modal" class="modal" style="display: none;">
         <h1>Export</h1>
         <p>
           <label for="export-format">Format: </label>
@@ -246,7 +246,7 @@
         </p>
       </div>
 
-      <div id="custom-namespace-modal" class="modal">
+      <div id="custom-namespace-modal" class="modal" style="display: none;">
         <h1>Custom namespaces</h1>
         <ul></ul>
         <label for="custom-namespace-namespace">Namespace: </label><input type="text" id="custom-namespace-namespace"><br>
@@ -271,7 +271,7 @@
 
       </div>
 
-      <div class="tab" id="status-tab">
+      <div class="tab" id="status-tab" style="display: none;">
 
         <div class="box">
           <div id="status-text"></div>
@@ -280,7 +280,7 @@
 
       </div>
 
-      <div class="tab" id="health-tab">
+      <div class="tab" id="health-tab" style="display: none;">
 
         <div class="box" id="health-overview">
           <div class="box">
@@ -300,13 +300,13 @@
 
       </div>
 
-      <div class="tab" id="performance-tab">
+      <div class="tab" id="performance-tab" style="display: none;">
 
         <div class="box"></div>
         
       </div>
 
-      <div class="tab" id="namespaces-tab">
+      <div class="tab" id="namespaces-tab" style="display: none;">
         
         <div class="box">
           <h1>Namespaces</h1>
