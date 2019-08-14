@@ -4,6 +4,7 @@ $(function() {
 /* jshint validthis: true */
 
 /* Global variables */
+var vrvToolkit = null;
 
 // LBS/non-LBS URL prefixes
 var RW_URL_PREFIX, RO_URL_PREFIX;
@@ -125,6 +126,13 @@ var EXPORT_EXTENSIONS = {
    'application/sparql-results+json': ['JSON', 'json', false, exportJSON],
    // 'text/tab-separated-values': ['TSV', 'tsv', false, exportTSV],
    'application/sparql-results+xml': ['XML', 'xml', false, exportXML]
+};
+
+function verovioCallback(input) {
+   if (vrvToolkit == null) {
+      vrvToolkit = new verovio.toolkit();
+      console.log(vrvToolkit);
+   }
 };
 
 
@@ -1618,9 +1626,10 @@ function showPage(n) {
          var tr = $('<tr>');
          for(var j=0; j<QUERY_RESULTS.head.vars.length; j++) {
             if(QUERY_RESULTS.head.vars[j] in QUERY_RESULTS.results.bindings[i]) {
-               var callbackVerovio = (QUERY_RESULTS.head.vars[j] == "verovioCallback");
+               var isIncipit = (QUERY_RESULTS.head.vars[j] == "verovioCallback");
                var binding = QUERY_RESULTS.results.bindings[i][QUERY_RESULTS.head.vars[j]];
-               if (callbackVerovio) {
+               if (isIncipit) {
+                  verovioCallback('test');
                   text = "SVG!: " + binding.value;
                }
                else if(binding.type == 'sid') {
