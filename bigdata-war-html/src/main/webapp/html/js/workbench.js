@@ -1479,7 +1479,9 @@ function showQueryResults(data) {
       var thead = $('<thead>').appendTo(table);
       tr = $('<tr>');
       for(i=0; i<data.head.vars.length; i++) {
-         tr.append('<th>' + data.head.vars[i] + '</th>');
+         var text = data.head.vars[i];
+         if (text == "verovioCallback") text = "verovio"
+         tr.append('<th>' + text + '</th>');
       }
       thead.append(tr);
       table.append(thead);
@@ -1616,8 +1618,12 @@ function showPage(n) {
          var tr = $('<tr>');
          for(var j=0; j<QUERY_RESULTS.head.vars.length; j++) {
             if(QUERY_RESULTS.head.vars[j] in QUERY_RESULTS.results.bindings[i]) {
+               var callbackVerovio = (QUERY_RESULTS.head.vars[j] == "verovioCallback");
                var binding = QUERY_RESULTS.results.bindings[i][QUERY_RESULTS.head.vars[j]];
-               if(binding.type == 'sid') {
+               if (callbackVerovio) {
+                  text = "SVG!: " + binding.value;
+               }
+               else if(binding.type == 'sid') {
                   text = getSID(binding);
                } else {
                   text = binding.value;
