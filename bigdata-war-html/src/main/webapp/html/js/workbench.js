@@ -6,6 +6,21 @@ $(function() {
 /* Global variables */
 var vrvToolkit = null;
 
+// set verovio options
+const vrvOptions = {
+  inputFormat: 'pae',
+  pageHeight: 2970,
+  pageWidth: 1400,
+  spacingStaff: 0,
+  pageMarginBottom: 20,
+  pageMarginLeft: 20,
+  pageMarginRight: 20,
+  pageMarginTop: 20,
+  adjustPageHeight: 1,
+  scale: 35,
+  xmlIdSeed: 1
+};
+
 // LBS/non-LBS URL prefixes
 var RW_URL_PREFIX, RO_URL_PREFIX;
 
@@ -131,8 +146,8 @@ var EXPORT_EXTENSIONS = {
 function verovioCallback(input) {
    if (vrvToolkit == null) {
       vrvToolkit = new verovio.toolkit();
-      console.log(vrvToolkit);
    }
+   return vrvToolkit.renderData(input, vrvOptions);
 };
 
 
@@ -1629,18 +1644,19 @@ function showPage(n) {
                var isIncipit = (QUERY_RESULTS.head.vars[j] == "verovioCallback");
                var binding = QUERY_RESULTS.results.bindings[i][QUERY_RESULTS.head.vars[j]];
                if (isIncipit) {
-                  verovioCallback('test');
-                  text = "SVG!: " + binding.value;
+                  text = verovioCallback(binding.value);
                }
-               else if(binding.type == 'sid') {
-                  text = getSID(binding);
-               } else {
-                  text = binding.value;
-                  if(binding.type == 'uri') {
-                     text = abbreviate(text);
+               else {
+                  if (binding.type == 'sid') {
+                     text = getSID(binding);
+                  } else {
+                     text = binding.value;
+                     if(binding.type == 'uri') {
+                        text = abbreviate(text);
+                     }
                   }
+                  linkText = escapeHTML(text).replace(/\n/g, '<br>');
                }
-               linkText = escapeHTML(text).replace(/\n/g, '<br>');
                if(binding.type == 'typed-literal') {
                   tdData = ' class="literal" data-datatype="' + binding.datatype + '"';
                } else {
