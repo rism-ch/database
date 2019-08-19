@@ -22,7 +22,7 @@
                     </td>
                     <td align="center" border="0" valign="middle" id="nopad">
                         <h1>
-                            Blazegraph experimental interface for Muscat RDF export
+                            Experimental RDF Blazegraph interface for Muscat
                         </h1>
                         <h2 id="nopad">
                             
@@ -54,7 +54,7 @@
 
         <div class="splashbox">
           <p>
-            Welcome to Blazegraph interface for Muscat!
+            Welcome to the Blazegraph interface for Muscat!
           </p>
         </div>
         <div class="splashbox">
@@ -74,15 +74,15 @@ PREFIX dc11: &lt;http://purl.org/dc/elements/1.1/&gt;
 PREFIX gnd: &lt;https://d-nb.info/standards/elementset/gnd/&gt;
 PREFIX pae: &lt;https://www.iaml.info/plaine-easie-code/&gt;
 
-SELECT ?incipit ?clef ?time ?key ?source ?verovioCallback WHERE {
+SELECT ?incipit ?clef ?timesig ?keysig ?source ?verovioCallback WHERE {
     [] pae:incipit ?incipit ;
     pae:clef ?clef;
-    pae:key ?key;
-    pae:time ?time;
-    pae:key &#x27;xFC&#x27;;
+    pae:keysig ?keysig;
+    pae:timesig ?timesig;
+    pae:keysig &#x27;xFC&#x27;;
     dc:isPartOf ?source .
     # bind incipit field into a verovioCallback variable 
-    BIND(CONCAT(&quot;@clef:&quot;, ?clef, &quot;\n@keysig:&quot;, ?key, &quot;\n@timesig:&quot;, ?time, &quot;\n@data:&quot;,?incipit) AS ?verovioCallback)    
+    BIND(CONCAT(&quot;@clef:&quot;, ?clef, &quot;\n@keysig:&quot;, ?keysig, &quot;\n@timesig:&quot;, ?timesig, &quot;\n@data:&quot;,?incipit) AS ?verovioCallback)    
 }
 LIMIT 500
             </code></pre>
